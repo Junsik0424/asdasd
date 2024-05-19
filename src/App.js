@@ -1,18 +1,3 @@
-// import './App.css';
-// import Hello from './component/Hello'; //Hello component 안에 World component가 
-//있어서 World를 따로 import 하지 않아도 됨.
-// import Welcome from './component/Welcome';
-
-// function App() {
-//   return <div className="App">
-//     <Hello></Hello>
-//     <Hello/> 
-//     <Welcome/>
-//     </div>
-// }
-// import abcde from './App.module.css'
-
-
 import Day from "./component/Day";
 import DayList from "./component/DayList";
 import Header from "./component/Header";
