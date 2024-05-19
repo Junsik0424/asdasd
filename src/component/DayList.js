@@ -1,19 +1,9 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import useFetch from "../hooks/useFetch";
 
 export default function DayList() { 
 
-  const [days, setDays] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3003/days")
-      .then(res => {
-        return res.json();
-      })
-      .then(data => {
-        setDays(data);
-      });
-  }, []);
+const days = useFetch("http://localhost:3003/days") //useFetch를 days라고 하면 API로 data를 받아오는 부분을 의미하게 됨
 
   return (
     <ul className="list_day">
