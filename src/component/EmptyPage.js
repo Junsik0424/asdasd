@@ -4,7 +4,8 @@ export default function EmptyPage() {
   return (
     <>
       <h2>잘못된 접근입니다.</h2>
-      <Link to="/">돌아가기</Link>
+      <Link to="/">돌아가기</Link> 
     </>
-  )
+  );
 }
+//EmptyPage를 이용해 홈으로 돌아가는 링크 만듦
