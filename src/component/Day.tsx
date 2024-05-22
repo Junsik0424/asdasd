@@ -1,10 +1,11 @@
-import useFetch from "../hooks/useFetch";
-import Word from "./Word";
+import React from "react";
+import useFetch from "../hooks/useFetch.ts";
+import Word, {IWord} from "./Word.tsx";
 import { useParams } from "react-router-dom" 
 
 export default function Day() {
-  const { day } = useParams()   
-  const words = useFetch(`http://localhost:3003/words?day=${day}`) //useFetch를 words라고 하면 API로 data를 받아오는 부분을 의미하게 됨
+  const { day } = useParams<{day: string}> ()
+  const words: IWord[] = useFetch(`http://localhost:3001/words?day=${day}`)
 
   return (
     <div>

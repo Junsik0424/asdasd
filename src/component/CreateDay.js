@@ -1,12 +1,13 @@
-import { useHistory } from "react-router";
-import useFetch from "../hooks/useFetch";
+import React from "react";
+import { useNavigate } from "react-router";
+import useFetch from "../hooks/useFetch.ts";
 
 export default function CreateDay() {
-  const days = useFetch("http://localhost:3003/days")
-  const history = useHistory();
+  const days = useFetch("http://localhost:3001/days")
+  const navigate = useNavigate();
 
   function addDay() {
-    fetch(`http://localhost:3003/days/`, {
+    fetch(`http://localhost:3001/days/`, {
       method: "POST",//create
       headers: {
         "Content-Type": "application/json",
@@ -17,7 +18,7 @@ export default function CreateDay() {
     }).then(res => {
       if (res.ok) {
         alert("생성이 완료 되었습니다")
-        history.push(`/`)
+        navigate(`/`)
       }
     });
   }

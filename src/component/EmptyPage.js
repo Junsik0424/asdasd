@@ -8,4 +8,3 @@ export default function EmptyPage() {
     </>
   );
 }
-//EmptyPage를 이용해 홈으로 돌아가는 링크 만듦
