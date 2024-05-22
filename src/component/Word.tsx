@@ -1,16 +1,30 @@
 import { useState } from "react"
+import React from "react"
 
- export default function Word({ word:w }) {//{word:w}로 설정하면 w를 새로운 변수명으로 사용
+interface IProps {
+  word: IWord
+}
+
+export interface IWord {
+  day: string
+  eng: string
+  kor: string
+  isDone: boolean
+  id: number
+
+}
+
+ export default function Word({ word:w }: IProps) {
+   const [word, setWord] = useState(w);
    const [isShow, setIsShow] = useState(false);
    const [isDone, setIsDone] = useState(word.isDone);
-   const [word, setWord] = useState(w);
-   //props로 넘어온 word를 w라는 변수명으로 사용
+ 
 
    function toggleShow() {
      setIsShow(!isShow);
    }
    function toggleDone() {
-    fetch(`http://localhost:3003/words/${word.id}`, {
+    fetch(`http://localhost:3001/words/${word.id}`, {
      method: "PUT",
      headers: {
        "Content-Type": "application/json",
@@ -28,11 +42,13 @@ import { useState } from "react"
 
   function del() {
     if (window.confirm("삭제 하시겠습니까?")) {
-      fetch(`http://localhost:3003/words/${word.id}`, {
+      fetch(`http://localhost:3001/words/${word.id}`, {
         method: "DELETE",
       }).then(res => {
         if (res.ok) {
-          setWord({ id: 0 });
+          setWord({ 
+            ...word,
+            id: 0 });
         }
       });
     }
